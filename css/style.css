@@ -20,6 +20,8 @@ body {
     background-color: #efefef;
     width: 100%;
     height: 6.5rem;
+    font-size: 6rem;
+    text-align: right;
 }
 
 .keypad {
