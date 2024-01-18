@@ -1,72 +1,77 @@
 function calculator(e) {
-    let temp = e.target.innerHTML
+
+    // 123 + 345
+
+    let temp = e.target.innerHTML // 4
     let x;
-    let firstOperand = e.target.innerHTML
+    let firstOperand, secondOperand, operator, result;
     let screen = document.getElementById('screen')
 
+    if (localStorage.getItem('firstOperand')) {
+        firstOperand = localStorage.getItem('firstOperand') // 123
+    }
+
+    if (localStorage.getItem('operator')) {
+        operator = localStorage.getItem('operator') // +
+    }
+
+    if (localStorage.getItem('secondOperand')) {
+        secondOperand = localStorage.getItem('secondOperand') // 
+    }
+
     if (temp == '+' || temp == '-' || temp == '*' || temp == '/') {
-        // Only use one operator
+        localStorage.setItem('operator', temp);
+        operator = temp
     } else if (temp == 'AC') {
-        screen.innerHTML = '0';
+        localStorage.clear();
     } else if (temp == '=') {
+        switch (operator) {
+            case '+':
+                result = parseInt(firstOperand) + parseInt(secondOperand)
+                break;
+            case '-':
+                result = parseInt(firstOperand) - parseInt(secondOperand)
+                break;
+            case '/':
+                result = parseInt(firstOperand) / parseInt(secondOperand)
+                break;
+            case '*':
+                result = parseInt(firstOperand) * parseInt(secondOperand)
+                break;
+        }
+        localStorage.clear()
+        localStorage.setItem('firstOperand', result)
+        
 
     } else {
-        x = localStorage.getItem('firstOperand')
-        if (x) {
-            x += firstOperand
+        if (localStorage.getItem('operator')) {
+            x = localStorage.getItem('secondOperand'); // 3
+            secondOperand = temp // 4
+            if (x) {
+                x += secondOperand // Concat as the type of the variable is string 34
+            }
+            localStorage.setItem('secondOperand', x == null ? secondOperand : x);
+        } else {
+            x = localStorage.getItem('firstOperand') // 1
+            firstOperand = temp
+            if (x) {
+                x += firstOperand // Concat as the type of the variable is string
+            }
+            localStorage.setItem('firstOperand', x == null ? firstOperand : x);
         }
-        localStorage.setItem('firstOperand', x == null ? firstOperand : x);
-
     }
-    screen.innerHTML = x == null ? firstOperand : x;
-    // switch (firstOperand) {
-    //     case 'AC':
-    //         screen.innerHTML = '0';
-    //         break;
-    //     case '+':
-    //         screen.innerHTML = '+';
-    //         break;
-    //     case '-':
-    //         screen.innerHTML = '-';
-    //         break;
-    //     case '/':
-    //         screen.innerHTML = '/';
-    //         break;
-    //     case '*':
-    //         screen.innerHTML = '*';
-    //         break;
-    //     case '1':
-    //         screen.innerHTML = '1';
-    //         break;
-    //     case '2':
-    //         screen.innerHTML = '2';
-    //         break;
-    //     case '3':
-    //         screen.innerHTML = '3';
-    //         break;
-    //     case '4':
-    //         screen.innerHTML = '4';
-    //         break;
-    //     case '5':
-    //         screen.innerHTML = '5';
-    //         break;
-    //     case '6':
-    //         screen.innerHTML = '6';
-    //         break;
-    //     case '7':
-    //         screen.innerHTML = '7';
-    //         break;
-    //     case '8':
-    //         screen.innerHTML = '8';
-    //         break;
-    //     case '9':
-    //         screen.innerHTML = '9';
-    //         break;
-    //     case '0':
-    //         screen.innerHTML = '0';
-    //         break;
-    //     case '=':
-    //         screen.innerHTML = '=';
-    //         break;
-    // }
+    firstOperand = localStorage.getItem('firstOperand') ? localStorage.getItem('firstOperand') : ''
+    operator = localStorage.getItem('operator') ? localStorage.getItem('operator') : ''
+    secondOperand = localStorage.getItem('secondOperand') ? localStorage.getItem('secondOperand') : '';
+    if (result) {
+        screen.innerHTML = result
+
+    } else {
+        screen.innerHTML = firstOperand + operator + secondOperand;
+    }
+
+    if (temp == 'AC') {
+        screen.innerHTML = '0'
+    }
+
 }
