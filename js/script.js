@@ -1,77 +1,222 @@
 function calculator(e) {
+    let screen = document.getElementById('screen');
 
-    // 123 + 345
+    let key = e.target.innerHTML;
 
-    let temp = e.target.innerHTML // 4
-    let x;
-    let firstOperand, secondOperand, operator, result;
-    let screen = document.getElementById('screen')
+    let firstOperand, operator, secondOperand, result;
 
     if (localStorage.getItem('firstOperand')) {
-        firstOperand = localStorage.getItem('firstOperand') // 123
+        firstOperand = localStorage.getItem('firstOperand')
     }
 
     if (localStorage.getItem('operator')) {
-        operator = localStorage.getItem('operator') // +
+        operator = localStorage.getItem('operator')
     }
 
     if (localStorage.getItem('secondOperand')) {
-        secondOperand = localStorage.getItem('secondOperand') // 
+        secondOperand = localStorage.getItem('secondOperand')
     }
 
-    if (temp == '+' || temp == '-' || temp == '*' || temp == '/') {
-        localStorage.setItem('operator', temp);
-        operator = temp
-    } else if (temp == 'AC') {
-        localStorage.clear();
-    } else if (temp == '=') {
+    switch (key) {
+        case '+':
+            if (firstOperand)
+                localStorage.setItem('operator', key)
+            operator = key
+            break;
+        case '-':
+            if (firstOperand)
+                localStorage.setItem('operator', key)
+            operator = key
+            break;
+        case '/':
+            if (firstOperand)
+                localStorage.setItem('operator', key)
+            operator = key
+            break;
+        case '*':
+            if (firstOperand)
+                localStorage.setItem('operator', key)
+            operator = key
+            break;
+        case '=':
+            break;
+        case 'AC':
+            localStorage.clear();
+            break;
+        case '1':
+            if (operator) {
+                if (localStorage.getItem('secondOperand')) {
+                    secondOperand += key
+                }
+                localStorage.setItem('secondOperand', secondOperand ? secondOperand : key)
+                secondOperand = localStorage.getItem('secondOperand')
+            }
+            else {
+                if (localStorage.getItem('firstOperand')) {
+                    firstOperand += key
+                }
+                localStorage.setItem('firstOperand', firstOperand ? firstOperand : key)
+            }
+            break;
+        case '2':
+            if (operator) {
+                if (localStorage.getItem('secondOperand')) {
+                    secondOperand += key
+                }
+                localStorage.setItem('secondOperand', secondOperand ? secondOperand : key)
+                secondOperand = localStorage.getItem('secondOperand')
+            }
+            else {
+                if (localStorage.getItem('firstOperand')) {
+                    firstOperand += key
+                }
+                localStorage.setItem('firstOperand', firstOperand ? firstOperand : key)
+            }
+            break;
+        case '3':
+            if (operator) {
+                if (localStorage.getItem('secondOperand')) {
+                    secondOperand += key
+                }
+                localStorage.setItem('secondOperand', secondOperand ? secondOperand : key)
+                secondOperand = localStorage.getItem('secondOperand')
+            }
+            else {
+                if (localStorage.getItem('firstOperand')) {
+                    firstOperand += key
+                }
+                localStorage.setItem('firstOperand', firstOperand ? firstOperand : key)
+            }
+            break;
+        case '4':
+            if (operator) {
+                if (localStorage.getItem('secondOperand')) {
+                    secondOperand += key
+                }
+                localStorage.setItem('secondOperand', secondOperand ? secondOperand : key)
+                secondOperand = localStorage.getItem('secondOperand')
+            }
+            else {
+                if (localStorage.getItem('firstOperand')) {
+                    firstOperand += key
+                }
+                localStorage.setItem('firstOperand', firstOperand ? firstOperand : key)
+            }
+            break;
+        case '5':
+            if (operator) {
+                if (localStorage.getItem('secondOperand')) {
+                    secondOperand += key
+                }
+                localStorage.setItem('secondOperand', secondOperand ? secondOperand : key)
+                secondOperand = localStorage.getItem('secondOperand')
+            }
+            else {
+                if (localStorage.getItem('firstOperand')) {
+                    firstOperand += key
+                }
+                localStorage.setItem('firstOperand', firstOperand ? firstOperand : key)
+            }
+            break;
+        case '6':
+            if (operator) {
+                if (localStorage.getItem('secondOperand')) {
+                    secondOperand += key
+                }
+                localStorage.setItem('secondOperand', secondOperand ? secondOperand : key)
+                secondOperand = localStorage.getItem('secondOperand')
+            }
+            else {
+                if (localStorage.getItem('firstOperand')) {
+                    firstOperand += key
+                }
+                localStorage.setItem('firstOperand', firstOperand ? firstOperand : key)
+            }
+            break;
+        case '7':
+            if (operator) {
+                if (localStorage.getItem('secondOperand')) {
+                    secondOperand += key
+                }
+                localStorage.setItem('secondOperand', secondOperand ? secondOperand : key)
+                secondOperand = localStorage.getItem('secondOperand')
+            }
+            else {
+                if (localStorage.getItem('firstOperand')) {
+                    firstOperand += key
+                }
+                localStorage.setItem('firstOperand', firstOperand ? firstOperand : key)
+            }
+            break;
+        case '8':
+            if (operator) {
+                if (localStorage.getItem('secondOperand')) {
+                    secondOperand += key
+                }
+                localStorage.setItem('secondOperand', secondOperand ? secondOperand : key)
+                secondOperand = localStorage.getItem('secondOperand')
+            }
+            else {
+                if (localStorage.getItem('firstOperand')) {
+                    firstOperand += key
+                }
+                localStorage.setItem('firstOperand', firstOperand ? firstOperand : key)
+            }
+            break;
+        case '9':
+            if (operator) {
+                if (localStorage.getItem('secondOperand')) {
+                    secondOperand += key
+                }
+                localStorage.setItem('secondOperand', secondOperand ? secondOperand : key)
+                secondOperand = localStorage.getItem('secondOperand')
+            }
+            else {
+                if (localStorage.getItem('firstOperand')) {
+                    firstOperand += key
+                }
+                localStorage.setItem('firstOperand', firstOperand ? firstOperand : key)
+            }
+            break;
+        case '0':
+            if (operator) {
+                if (localStorage.getItem('secondOperand')) {
+                    secondOperand += key
+                }
+                localStorage.setItem('secondOperand', secondOperand ? secondOperand : key)
+                secondOperand = localStorage.getItem('secondOperand')
+            }
+            else {
+                if (localStorage.getItem('firstOperand')) {
+                    firstOperand += key
+                }
+                localStorage.setItem('firstOperand', firstOperand ? firstOperand : key)
+            }
+            break;
+    }
+
+    result = firstOperand ? firstOperand : key
+    if (operator) {
+        result += operator
+    }
+    if (secondOperand) {
+        result += secondOperand
+    }
+
+    if (key == '=') {
+        firstOperand = parseInt(firstOperand)
+        secondOperand = parseInt(secondOperand)
         switch (operator) {
-            case '+':
-                result = parseInt(firstOperand) + parseInt(secondOperand)
+            case '+': result = firstOperand + secondOperand
                 break;
-            case '-':
-                result = parseInt(firstOperand) - parseInt(secondOperand)
+            case '-': result = firstOperand - secondOperand
                 break;
-            case '/':
-                result = parseInt(firstOperand) / parseInt(secondOperand)
+            case '/': result = firstOperand / secondOperand
                 break;
-            case '*':
-                result = parseInt(firstOperand) * parseInt(secondOperand)
+            case '*': result = firstOperand * secondOperand
                 break;
         }
-        localStorage.clear()
-        localStorage.setItem('firstOperand', result)
-        
-
-    } else {
-        if (localStorage.getItem('operator')) {
-            x = localStorage.getItem('secondOperand'); // 3
-            secondOperand = temp // 4
-            if (x) {
-                x += secondOperand // Concat as the type of the variable is string 34
-            }
-            localStorage.setItem('secondOperand', x == null ? secondOperand : x);
-        } else {
-            x = localStorage.getItem('firstOperand') // 1
-            firstOperand = temp
-            if (x) {
-                x += firstOperand // Concat as the type of the variable is string
-            }
-            localStorage.setItem('firstOperand', x == null ? firstOperand : x);
-        }
-    }
-    firstOperand = localStorage.getItem('firstOperand') ? localStorage.getItem('firstOperand') : ''
-    operator = localStorage.getItem('operator') ? localStorage.getItem('operator') : ''
-    secondOperand = localStorage.getItem('secondOperand') ? localStorage.getItem('secondOperand') : '';
-    if (result) {
-        screen.innerHTML = result
-
-    } else {
-        screen.innerHTML = firstOperand + operator + secondOperand;
     }
 
-    if (temp == 'AC') {
-        screen.innerHTML = '0'
-    }
-
+    screen.innerHTML = result
 }
